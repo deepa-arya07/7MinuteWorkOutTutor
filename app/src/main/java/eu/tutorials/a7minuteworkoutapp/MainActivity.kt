@@ -3,11 +3,19 @@ package eu.tutorials.a7minuteworkoutapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.widget.FrameLayout
 import android.widget.Toast
 import eu.tutorials.a7minuteworkoutapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    //variable for timer which will be initialized later.
+    private var countDownTimer:CountDownTimer? = null
+    //The duration of the timer in milliseconds
+    private var timerDuration: Long = 60000
+    //pauseOffset = timerDuration - time left
+    private var pauseOffset: Long = 0
     //  The binding is name just like the name of the layout with Binding attached
     //Todo 1:We create a variable for it and assign to null
     private var binding:ActivityMainBinding? = null
@@ -21,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         binding?.flStart?.setOnClickListener {
             val intent = Intent(this,ExerciseActivity::class.java)
             startActivity(intent)
+
         }
     }
 
